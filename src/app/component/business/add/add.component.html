@@ -1,0 +1,79 @@
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Name</label>
+          <input type="text" class="form-control" formControlName="business_name" #business_name />
+        </div>
+        <div *ngIf="angForm.controls['business_name'].invalid && (angForm.controls['business_name'].dirty || angForm.controls['business_name'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['business_name'].errors.required">
+            Business Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Category</label>
+          <select *ngFor="let category of categories" formControlName="category" #category>
+            <option>{ category.name }</option>
+          </select>
+        </div>
+        <div *ngIf="angForm.controls['category'].invalid && (angForm.controls['category'].dirty || angForm.controls['category'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['category'].errors.required">
+            A business category is needed
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Description </label>
+          <textarea class="form-control" formControlName="description" #description ></textarea>
+        </div>
+        <div *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['description'].errors.required">
+            Business description is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">E-mail</label>
+          <input type="email" class="form-control" formControlName="email" #email />
+        </div>
+        <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['email'].errors.required">
+            Contact email is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Website</label>
+          <input type="website" class="form-control" formControlName="website" #website />
+        </div>
+        <div *ngIf="angForm.controls['website'].invalid && (angForm.controls['website'].dirty || angForm.controls['website'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['website'].errors.required">
+            Website is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Phone </label>
+          <input type="text" class="form-control" formControlName="business_phone_number" #business_phone_number />
+        </div>
+        <div *ngIf="angForm.controls['business_phone_number'].invalid && (angForm.controls['business_phone_number'].dirty || angForm.controls['business_phone_number'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['business_phone_number'].errors.required">
+            Business Phone Number is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Address </label>
+          <textarea class="form-control" formControlName="address" #address ></textarea>
+        </div>
+        <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['address'].errors.required">
+            Business address is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" (click)="addBusiness(business_name.value, category.value, description.value, email.value, website.value, business_phone_number.value, address.value)"
+          [disabled]="angForm.pristine || angForm.invalid" 
+          class="btn btn-primary">Add Business</button>
+        </div>
+      </form>
+    </div>
+  </div>

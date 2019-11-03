@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="catForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Name</label>
+          <input type="text" class="form-control" formControlName="name" #name />
+        </div>
+        <div *ngIf="catForm.controls['name'].invalid && (catForm.controls['name'].dirty || catForm.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="catForm.controls['name'].errors.required">
+            Category Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" (click)="addCategory(name.value)"
+          [disabled]="catForm.pristine || catForm.invalid" 
+          class="btn btn-primary">Add Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
