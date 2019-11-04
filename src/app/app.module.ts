@@ -6,14 +6,17 @@ import { AppComponent } from './app.component';
 import { AddComponent } from './component/business/add/add.component';
 import { EditComponent } from './component/business/edit/edit.component';
 import { ListComponent } from './component/business/list/list.component';
-import { AddComponent as AddCat } from './component/category/add/add.component';
-import { ListComponent as ListCat } from './component/category/list/list.component';
+import { AddCatComponent as AddCat } from './component/category/add-cat/add-cat.component';
+import { ListCatComponent as ListCat } from './component/category/list-cat/list-cat.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BusinessService } from './service/business.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCatComponent } from './component/category/add-cat/add-cat.component';
 import { ListCatComponent } from './component/category/list-cat/list-cat.component';
+import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
+import { LoginComponent } from './component/user/login/login.component';
+import { RegisterComponent } from './component/user/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { ListCatComponent } from './component/category/list-cat/list-cat.compone
     AddCat,
     ListCat,
     AddCatComponent,
-    ListCatComponent
+    ListCatComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,10 @@ import { ListCatComponent } from './component/category/list-cat/list-cat.compone
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [BusinessService],
+  providers: [
+    BusinessService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,15 +22,19 @@ export class EditComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-        person_name: ['', Validators.required ],
         business_name: ['', Validators.required ],
-        business_gst_number: ['', Validators.required ]
+        category: ['', Validators.required],
+        description: ['', Validators.required ],
+        email: ['', Validators.required],
+        business_phone_number: ['', Validators.required ],
+        website: ['', Validators.required],
+        address: ['', Validators.required]
       });
     }
 
-  updateBusiness(person_name, business_name, business_gst_number) {
+  updateBusiness(business_name, category, description, email, website, business_phone_number, address) {
     this.route.params.subscribe(params => {
-      this.bs.updateBusiness(person_name, business_name, business_gst_number, params['id']);
+      this.bs.updateBusiness(business_name, category, description, email, website, business_phone_number, address, params['id']);
       this.router.navigate(['business']);
     });
   }

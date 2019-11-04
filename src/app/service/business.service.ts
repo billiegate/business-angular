@@ -33,12 +33,16 @@ export class BusinessService {
     return this.http.get(`${this.uri}/edit/${id}`);
   }
   
-  updateBusiness(person_name, business_name, business_gst_number, id) {
+  updateBusiness(business_name, category, description, email, website, business_phone_number, address, id) {
 
       const obj = {
-          person_name: person_name,
-          business_name: business_name,
-          business_gst_number: business_gst_number
+        business_name: business_name,
+        category: category,
+        description: description,
+        email: email,
+        website: website,
+        business_phone_number: business_phone_number,
+        address: address
         };
       this
         .http

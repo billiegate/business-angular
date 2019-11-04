@@ -7,6 +7,8 @@ import { ListComponent as ListBiz } from './component/business/list/list.compone
 // import { ListComponent as ListCat } from './component/category/list/list.component';
 import { AddCatComponent } from './component/category/add-cat/add-cat.component';
 import { ListCatComponent } from './component/category/list-cat/list-cat.component';
+import { LoginComponent } from './component/user/login/login.component';
+import { RegisterComponent } from './component/user/register/register.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,14 @@ const routes: Routes = [
   {
     path: 'category',
     component: ListCatComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 

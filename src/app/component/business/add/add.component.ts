@@ -21,6 +21,7 @@ export class AddComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       business_name: ['', Validators.required ],
+      category: ['', Validators.required],
       description: ['', Validators.required ],
       email: ['', Validators.required],
       business_phone_number: ['', Validators.required ],
